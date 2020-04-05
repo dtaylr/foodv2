@@ -1,0 +1,165 @@
+$med: 767px;
+
+@mixin medScrn{
+    @media (min-width: #{$med}){
+        .detail-info{
+            display: flex;
+            flex-direction: row;     
+            justify-content: space-around;
+            align-items: center;   
+            padding-bottom: 3rem;    
+        }
+
+        .detail-title{
+            padding: 2em;
+        }
+
+        .cat-info{
+            padding: 0;
+        }
+
+        .ingredients{
+            // margin-left: 4em;
+        }
+
+        img{
+            width:  400px;
+            height: 400px;
+        }
+    }
+}
+
+
+#meals{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: 1.3rem;
+    width: 90vw;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3rem;
+
+    .meal-container{
+        padding-bottom: 1rem;
+        width: 100%;
+    }
+
+    .meal-title{
+        padding-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    svg{
+        color: green;
+        font-size: 1.5rem;
+        margin: 0px .2rem;
+        cursor: pointer;
+    }
+
+    svg:hover{
+        color: red;
+    }
+
+    .meal-viz{
+        padding-top: 1rem;
+    }
+    
+    img{
+        width: 100%;
+        height: 240px;
+    }
+}
+
+.randoms-title{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.pages li{
+    display: block;
+    padding: .6rem;
+    border: 1px solid grey;
+}
+
+.pages a, .pages li{
+    text-decoration: none; 
+    list-style: none;
+
+
+}
+
+.filtered{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: 1.3rem;
+    width: 90vw;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3rem;
+}
+
+.detail-container{
+    display: flex;
+    flex-direction: column;
+
+    li{
+        list-style: none;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    @include medScrn();
+
+}
+
+    .ingredients h3{
+        margin: 2rem 0;
+    }
+
+    .img-container{
+        width: 300px;
+    }
+
+    img{
+        width: 100%;
+        
+    }
+
+    .detail-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .cat-info{
+        padding: 1.3rem 0;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .cat-info p{
+        margin-top: 1rem;
+    }
+
+   .ingredients{
+        padding-top: 1rem;
+   }
+
+    .detail-title{
+        padding: 2rem;
+    }

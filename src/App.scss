@@ -1,0 +1,39 @@
+@import './styles/navbar.scss';
+@import './styles/meals.scss';
+@import './styles/modal.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html{
+    height: 100%;
+    width: 100%;
+}
+
+.searchCont{
+    margin-top: 2em;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    width: 17em;
+}
+
+.searchBar{
+    width: 100%;
+    border: 1px solid darkgray;;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    outline: none;
+}
+
+.btn-search{
+    background-color: burlywood;
+    color: black;
+    padding: 1.4em;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+}

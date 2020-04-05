@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import Navbar from './components/Navbar'
+import Home from './pages/Home';
+import Meals from './pages/Meals';
+import Favorites from './components/Favorites';
+import Portal from './components/Portal';
+import MealDetail from './pages/MealDetail';
+import Search from './components/Search';
+import store from './store'
+import {Provider} from 'react-redux';
+import { Switch, Route, useLocation } from 'react-router';
+import './App.scss';
 
 function App() {
+
+  let location = useLocation()
+  // console.log(location)
+
+  let background = location.state && location.state.background;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Navbar/>
+      {/* <Search/> */}
+      <Switch location={background || location}>
+        <Route exact path='/' children={<Home/>}/>
+        <Route exact path='/meals' children={<Meals/>}/>
+        <Route exact path='/meals/:mealId' children={<MealDetail/>}/>
+        <Route export path='/favorites' children={<Favorites/>}/>
+      </Switch>
+			{background && <Route path='/meals/:mealId' children={<Portal />} />}
+    </Provider>
   );
 }
 

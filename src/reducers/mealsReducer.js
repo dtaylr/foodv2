@@ -4,6 +4,7 @@ const initialState ={
     randoms: [],
     mealId: {},
     search: '',
+    error: {},
     favs: [],
     filtered: [],
     mealsPpg: 5,
@@ -47,6 +48,11 @@ export default function (state = initialState, {payload, type}){
             return{
                 ...state,
                 favs: payload
+            }
+        case types.SHOW_ERROR:
+            return{
+                ...state,
+                filtered: payload
             }
         
             default:

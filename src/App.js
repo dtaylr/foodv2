@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar'
 import Home from './pages/Home';
 import Meals from './pages/Meals';
 import Favorites from './components/Favorites';
 import Portal from './components/Portal';
 import MealDetail from './pages/MealDetail';
-import Search from './components/Search';
+// import Search from './components/Search';
 import store from './store'
 import {Provider} from 'react-redux';
 import { Switch, Route, useLocation } from 'react-router';

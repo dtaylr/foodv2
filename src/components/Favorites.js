@@ -1,27 +1,22 @@
-import React, {useEffect} from 'react';
-import {getMeal} from '../actions/mealActions'
-import { useSelector, useDispatch } from 'react-redux'
+import React, {Fragment} from 'react';
+import Meal from './Meal'
+import { useSelector} from 'react-redux'
 
 const Favorites = () => {
 
-    let favs = useSelector(state=> state.meals.favs)
-
-    const dispatch = useDispatch()
-    console.log(favs)
+    let favs = useSelector(state => state.meals.favs);
 
     return (
-       <div>
-           {favs.length > 0 ? (favs.map(lilFav=> (
-               <div key={lilFav.idMeal}>
-                    <h3 className='fav-title'>{lilFav.strMeal}</h3>
-                    <div className='favImg-container'>
-                        <img className='fav' src={lilFav.strMealThumb} alt={`${lilFav.strMeal}`}/>
-                   </div>
-                   <button onClick={()=> dispatch(getMeal(lilFav))}>View Meal</button>
-               </div>
-           ))):(null)}
-       </div>
-       
+        <Fragment>
+            <h1 className='randoms-title'>Your Favorites</h1>
+            <section id='meals'>
+           {favs.length > 0 ? (favs.map(spoon=> (
+                <Meal key={spoon.idMeal} 
+                    rando={spoon}/>
+                 ))):(null)}
+            </section>
+        </Fragment>
+      
     )
 }
 

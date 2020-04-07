@@ -1,6 +1,18 @@
-@import './styles/navbar.scss';
+// @import './styles/navbar.scss';
 @import './styles/meals.scss';
 @import './styles/modal.scss';
+
+
+$colors:(
+    btn-main: #558C03,
+    btn-modal: #C4D925,
+    head: #BF0404,
+    lighter-red: #F20530,
+    erange: #F26B1D,
+
+    testred: #F00713,
+    searchbtn:#C90610
+);
 
 *{
     margin: 0;
@@ -9,8 +21,68 @@
 }
 
 body, html{
-    height: 100%;
+    min-height: 100%;
     width: 100%;
+}
+
+html{
+    background: white; /* fallback color */
+    background: linear-gradient(to bottom right,#2cb2d9 25%,#34c587 75%);;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+button{
+    border: none;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.btn-favs{
+    background-color: map-get($colors, erange);
+    padding: .5em .7em;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.btn-detail{
+    background-color: map-get($colors, testred);
+    padding: .8em;
+    border-radius: 10px;
+    color: white;
+    line-height: 8px;
+}
+
+.btn-detail:hover a{
+    background-color: map-get($colors, lighter-red);
+    color: black;
+}
+
+.btn-detail a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.modal-btn{
+    background-color: map-get($colors, btn-modal);
+    color: white;
+    padding: .8em;
+    border-radius: 10px;
+    line-height: 8px;
+}
+
+.modal-btn:hover{
+    background-color: map-get($colors, btn-main);
+    color: black;
+}
+
+.search-title{
+    text-align: center;
+    font-size: 1.4rem;
+    padding-top: 2rem;
 }
 
 .searchCont{
@@ -18,7 +90,7 @@ body, html{
     display: flex;
     margin-right: auto;
     margin-left: auto;
-    width: 17em;
+    width: 18em;
 }
 
 .searchBar{
@@ -29,11 +101,53 @@ body, html{
     outline: none;
 }
 
+input[value]{
+    padding-left: 1em;
+}
+
 .btn-search{
-    background-color: burlywood;
-    color: black;
-    padding: 1.4em;
+    background-color: map-get($colors, searchbtn );
+    color: white;
+    font-size: .58em;
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    padding: 1.4em 2em;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     outline: none;
+}
+
+.btn-search:hover{
+    background-color: map-get($colors, erange );
+    color: black
+}
+
+#navbar{
+    background-color: map-get($colors, head);
+    height: 7em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: center;
+    width: 100%;
+    padding-bottom: 1rem;
+
+    .nav-links{
+        padding-bottom: .2em;
+        align-items: center;
+        align-content: center;
+    }
+
+    .nav-links a:hover{
+        color: map-get($colors, btn-modal);
+    }
+
+    a{
+        text-decoration: none;
+        font-style: none;
+        color: black;
+        font-size: 1.5rem;
+        margin-right:1rem;
+        font-weight: 550;
+    }
 }

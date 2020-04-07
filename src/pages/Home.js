@@ -1,7 +1,5 @@
 import React, {useEffect, Fragment} from 'react'
-import {getFavs} from '../actions/mealActions'
 import { useDispatch, useSelector } from 'react-redux'
-import {Link, useLocation} from 'react-router-dom'
 import {getMeals, nextPage} from '../actions/mealActions';
 import Filtered from '../components/Filtered';
 import Pagination from '../components/Pagination';
@@ -20,9 +18,9 @@ const Home = () => {
     const currentPage = useSelector(state => state.meals.currentPage)
     const favs = useSelector(state => state.meals.favs)
 
-    const indexPrevMeal = currentPage * mealsPpg; //index of last meal should give 5 sets ppg ex 1 * 5 = 5, 2*5=10 ...
-    const indexFirstMeal = indexPrevMeal - mealsPpg; //can get 0 if on 1st pg but should still work? or 1 since 0 based
-    const currentMeals = filter.slice(indexFirstMeal, indexPrevMeal) // n(0, 5)
+    // const indexPrevMeal = currentPage * mealsPpg; //index of last meal should give 5 sets ppg ex 1 * 5 = 5, 2*5=10 ...
+    // const indexFirstMeal = indexPrevMeal - mealsPpg; //can get 0 if on 1st pg but should still work? or 1 since 0 based
+    // const currentMeals = filter.slice(indexFirstMeal, indexPrevMeal) // n(0, 5)
 
     // const nextPage = () => setPage(pages)
 
@@ -30,10 +28,11 @@ const Home = () => {
         dispatch(getMeals())
     }, [dispatch])
 
+
     return (
         <Fragment>
             <div className='search-holder'>
-                <Search meals={search}/>
+                <Search mealz={search}/>
             </div>
 
             <div>
@@ -42,11 +41,18 @@ const Home = () => {
             </div>
 
             <section id='meals'>
-                {filter.length > 0 ? (currentMeals.map(spoon=>(
-                    <Filtered key={spoon.idMeal} currentMeals={spoon}/>
-                    // <Filtered currentMeals={currentMeals}/>
+                {filter.length > 0 ? (filter.map(spoon => (
+                    <Filtered 
+                        key={spoon.idMeal} 
+                        currentMeals={spoon} 
+                        favs={favs}
+                    />
                 ))):(mealz.slice(0,5).map(rando => (
-                    <Meal key={rando.idMeal} rando={rando} favs={favs} />
+                    <Meal 
+                        key={rando.idMeal} 
+                        rando={rando} 
+                        favs={favs} 
+                    />
                 ))
                     )
                 }    

@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { searchIt } from '../actions/mealActions'
-import Filtered from '../components/Filtered'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-const Search = () => {
+const Search = ({mealz}) => {
 
     const [text, setText] = useState('')
 
@@ -13,15 +12,16 @@ const Search = () => {
     const onSubmit = e => {
         e.preventDefault();
         if(text === ''){
-            alert('enter some rass text');
+            alert('Please enter a meal to');
         }else{
             (searchIt(text));
             setText('')
         }
     }
-{/*Need URL TO CHANGE WITH SEARCH */}
+/*Need URL TO CHANGE WITH SEARCH */
     return (
         <div className='yeah'>
+            <h3 className='search-title'>Meal Search</h3>
             <form className='searchCont' onSubmit={onSubmit}>
                 <input 
                     type='text' 
@@ -32,7 +32,7 @@ const Search = () => {
                     name='search'
                 />
                 {/* <button onClick={()=> dispatch(search())}>Search</button> */}
-                <button onClick={()=> dispatch(searchIt(text))}className='btn-search'>Search</button>
+                <button onClick={()=> dispatch(searchIt(text, mealz))}className='btn-search'>Search</button>
             </form>
         </div>
     )

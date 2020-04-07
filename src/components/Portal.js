@@ -1,7 +1,4 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
-import {useHistory, useParams} from 'react-router-dom';
-import MealDetail from '../pages/MealDetail'
 // import './style.css'
 
 // const Portal = ({rando}) => {

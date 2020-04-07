@@ -1,16 +1,39 @@
 $med: 767px;
+$lrg: 1050px;
+
+@mixin lrgScrn {
+    @media (min-width: #{$lrg}){
+        .instruct-container{
+            max-width: 55%;
+        }
+    }
+}
 
 @mixin medScrn{
     @media (min-width: #{$med}){
         .detail-info{
             display: flex;
-            flex-direction: row;     
-            justify-content: space-around;
             align-items: center;   
             padding-bottom: 3rem;    
         }
 
+        .detail-head{
+            display: flex;
+            justify-content: center;
+            width: 80vw;
+        }
+
         .detail-title{
+            padding: 2em;
+        }
+
+        .instruct-container{
+            // width: 70%;
+            padding-top: 2em;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .instructions p{
             padding: 2em;
         }
 
@@ -18,8 +41,22 @@ $med: 767px;
             padding: 0;
         }
 
+        .ingredients h4{
+            margin: 0 0 1rem 0;
+        }
+        .recipe-list,
+        .ingredients h4,
+        .recipe-title{
+            padding: 0;
+        }
+
+        .recipe-title{
+            padding-bottom: 1.1rem;
+            padding-top: 2rem;
+        }
         .ingredients{
-            // margin-left: 4em;
+            padding-top: 0;
+            padding-left: 8rem;
         }
 
         img{
@@ -44,16 +81,34 @@ $med: 767px;
     .meal-container{
         padding-bottom: 1rem;
         width: 100%;
+        padding: 1.3rem;
+        box-shadow: 
+        inset 0 -3em 3em rgba(0,0,0,0.1), 
+              0 0  0 1px #C4D925,
+              0.3em 0.3em 1em rgba(0,0,0,0.3)
     }
 
     .meal-title{
-        padding-bottom: 1rem;
+        padding-bottom: .5rem;
         overflow: hidden;
+        color: black
     }
+
+    .meal-desc, .meal-cntrls{
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: .7em;
+        align-items: center;
+    }
+
+    .meal-cat, .meal-area{
+        margin: .7em 0;
+    }
+
 
     svg{
         color: green;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         margin: 0px .2rem;
         cursor: pointer;
     }
@@ -93,8 +148,6 @@ $med: 767px;
 .pages a, .pages li{
     text-decoration: none; 
     list-style: none;
-
-
 }
 
 .filtered{
@@ -112,25 +165,37 @@ $med: 767px;
 .detail-container{
     display: flex;
     flex-direction: column;
-
+    padding-bottom: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 85vw;
     li{
         list-style: none;
     }
-
     h1{
         text-align: center;
     }
 
     @include medScrn();
+    @include lrgScrn();
 
 }
 
-    .ingredients h3{
-        margin: 2rem 0;
+    .detail-desc{
+        margin-top: 1.4rem;
     }
 
-    .img-container{
-        width: 300px;
+    .detail-desc p{
+        margin-bottom: 1rem;
+    }
+
+    .ingredients h4{
+        margin: 1.2rem 0;
+    }
+
+    .instruct-container{
+        padding-top: 1rem;
+        justify-content: center;
     }
 
     img{
@@ -146,10 +211,21 @@ $med: 767px;
 
     }
 
+    .instructions{
+        padding-top: .5rem;
+    }
+
     .cat-info{
         padding: 1.3rem 0;
         font-size: 1.2rem;
         font-weight: 500;
+    }
+
+    .recipe-list,
+    .ingredients h4,
+    .instruct-title,
+    .instructions{
+        padding-left: 1.2rem;
     }
 
     .cat-info p{
@@ -157,9 +233,22 @@ $med: 767px;
     }
 
    .ingredients{
-        padding-top: 1rem;
+        padding-top: 1.5rem;
+
    }
 
+   .ingredients p{
+        padding-bottom: 1.1rem;
+   }
+
+
+   .recipe-list li{
+       padding-bottom: .7em;
+   }
+
+   .recipe-list li:nth-of-type(){
+       padding-bottom: none;
+   }
     .detail-title{
-        padding: 2rem;
+        padding: 1.5em 0em;
     }

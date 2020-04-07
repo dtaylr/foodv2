@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router'
 
 const MealDetail = ({rando}) => {
 
@@ -61,42 +60,51 @@ const MealDetail = ({rando}) => {
     return (
         <div className='detail-container'>
             <h1 className='detail-title'>{strMeal}</h1>
-            <article className='detail-info'>
-                <div className='img-container'>
-                    <img className='detailPhoto' alt={`${strMeal}`} src={strMealThumb}/>
-                </div>
-            <article className='ingredients'>
-                <div className='cat-info'>
-                    <p>Type: {strCategory}</p>
-                    <p>Nationality: {strArea}</p>
-                </div>
-                <h3>Ingredients</h3>
-                <ul className='receipe-list'>
-                <li>{strMeasure1} {strIngredient1}</li>
-                    <li>{strMeasure2} {strIngredient2}</li>
-                    <li>{strMeasure3} {strIngredient3}</li>
-                    <li>{strMeasure4} {strIngredient4}</li>
-                    <li>{strMeasure5} {strIngredient5}</li>
-                    <li>{strMeasure6} {strIngredient6}</li>
-                    <li>{strMeasure7} {strIngredient7}</li>
-                    <li>{strMeasure8} {strIngredient8}</li>
-                    <li>{strMeasure9} {strIngredient9}</li>
-                    <li>{strMeasure10} {strIngredient10}</li>
-                    <li>{strMeasure11} {strIngredient11}</li>
-                    <li>{strMeasure12} {strIngredient12}</li>
-                    <li>{strMeasure13} {strIngredient13}</li>
-                    <li>{strMeasure14} {strIngredient14}</li>
-                    <li>{strMeasure15} {strIngredient15}</li>
-                    <li>{strMeasure16} {strIngredient16}</li>
-                    <li>{strMeasure17} {strIngredient17}</li>
-                    <li>{strMeasure18} {strIngredient18}</li>
-                    <li>{strMeasure19} {strIngredient19}</li>
-                    <li>{strMeasure20} {strIngredient20}</li>
-                </ul>
-    <h3>{strInstructions}</h3>
-            </article>
-            </article>
+                <section className='detail-head'>
+                    <div className='top-section'>
+                        <div className='img-container'>
+                            <img className='detailPhoto' alt={`${strMeal}`} src={strMealThumb}/>
+                        </div>
+                        <article className='detail-desc'>
+                                <p>Type: {strCategory}</p>
+                                <p>Nationality: {strArea}</p>
+                        </article>
+                    </div>
+                <section className='ingredients'>
+                    <h4>Ingredients</h4>
+                        <ul className='recipe-list'>
+                            <li>{strMeasure1} {strIngredient1}</li>
+                            <li>{strMeasure2} {strIngredient2}</li>
+                            <li>{strMeasure3} {strIngredient3}</li>
+                            <li>{strMeasure4} {strIngredient4}</li>
+                            <li>{strMeasure5} {strIngredient5}</li>
+                            <li>{strMeasure6} {strIngredient6}</li>
+                            <li>{strMeasure7} {strIngredient7}</li>
+                            <li>{strMeasure8} {strIngredient8}</li>
+                            <li>{strMeasure9} {strIngredient9}</li>
+                            <li>{strMeasure10} {strIngredient10}</li>
+                            <li>{strMeasure11} {strIngredient11}</li>
+                            <li>{strMeasure12} {strIngredient12}</li>
+                            <li>{strMeasure13} {strIngredient13}</li>
+                            <li>{strMeasure14} {strIngredient14}</li>
+                            <li>{strMeasure15} {strIngredient15}</li>
+                            <li>{strMeasure16} {strIngredient16}</li>
+                            <li>{strMeasure17} {strIngredient17}</li>
+                            <li>{strMeasure18} {strIngredient18}</li>
+                            <li>{strMeasure19} {strIngredient19}</li>
+                            <li>{strMeasure20} {strIngredient20}</li>
+                        </ul>
+                </section>
+                </section>  
+                    <section className='instruct-container'>
+                        <h4 className='instruct-title'>Recipe</h4>
+                        <p className='instructions'>{strInstructions}</p>
+                    </section>  
         </div>
+                
+               
+                 
+
     )
 }
 

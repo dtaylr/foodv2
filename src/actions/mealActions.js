@@ -17,22 +17,28 @@ export const getMeals = () => dispatch =>{
     .then(res => res.json())
     .then(data =>{
         dispatch({type:types.GET_MEALS, payload: data.meals})})
+    .catch(error=> console.log('No Meals' + error))
 }
 
-export const searchIt = (text) => async dispatch =>{
-  await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
-        .then(res => res.json())
-        .then(data => {
+export const setLoading =()=>{
+    return{
+        type: types.SET_LOADING
+    }
+}
+
+export const searchIt = text => async dispatch =>{
+    try{
+        setLoading()
+        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
+        const data = await res.json()
             dispatch({type:types.SEARCH_MEAL, payload: data.meals})
-        })
-        .catch(error => {
-            alert('No meals found for your search. Please try another search')
-            dispatch({type:types.SHOW_ERROR, payload: error})  
-        })
-        //catch errors at end of chain
-        // .then(data => {
-        //     dispatch({type:types.SEARCH_MEAL, payload: data.meals})
-        // })
+    }catch (error){
+        dispatch({type:types.SHOW_ERROR, payload: error})  
+    } 
+}
+
+export const setMeals = spoons => async dispatch =>{
+    return dispatch({type: types.SET_MEALS, payload: spoons})
 }
 
 export const nextPage = number => dispatch =>{

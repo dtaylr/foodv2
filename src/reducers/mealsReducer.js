@@ -1,6 +1,6 @@
 import * as types from '../types';
 
-const initialState ={
+const initialState = {
     randoms: [],
     mealId: {},
     search: '',
@@ -29,10 +29,14 @@ export default function (state = initialState, {payload, type}){
         case types.SEARCH_MEAL:
             return{
                 ...state,
-                // loading: true,
                 search: payload,
                 filtered: payload,
                 pgNumbers: payload
+            }
+        case types.SET_MEALS:
+            return{
+                ...state,
+                loading: false,
             }
         case types.NEXT_PAGE:
             return{
@@ -49,12 +53,15 @@ export default function (state = initialState, {payload, type}){
                 ...state,
                 favs: payload
             }
+        case types.SET_LOADING:
+            return{
+                ...state,
+                loading: true
+            }
         case types.SHOW_ERROR:
             return{
                 ...state,
-                filtered: payload
             }
-        
             default:
                 return state;
     }

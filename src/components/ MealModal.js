@@ -1,7 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import {Link} from 'react-router-dom'
+// import{getMeal} from '../actions/e'
 
-const MealDetail = () => {
+
+const MealModal = () => {
 
     const meal = useSelector(state => state.meals.mealId)
     console.log(meal)
@@ -25,16 +28,6 @@ const MealDetail = () => {
         strIngredient8,
         strIngredient9,
         strIngredient10,
-        strIngredient11,
-        strIngredient12,
-        strIngredient13, 
-        strIngredient14, 
-        strIngredient15,
-        strIngredient16,
-        strIngredient17,
-        strIngredient18,
-        strIngredient19,
-        strIngredient20,
         strMeasure1,
         strMeasure2,
         strMeasure3,
@@ -45,32 +38,23 @@ const MealDetail = () => {
         strMeasure8,
         strMeasure9,
         strMeasure10,
-        strMeasure11,
-        strMeasure12,
-        strMeasure13,
-        strMeasure14,
-        strMeasure15,
-        strMeasure16,
-        strMeasure17,
-        strMeasure18,
-        strMeasure19,
-        strMeasure20
+        // strMeasure11,
+        // strMeasure12,
+        // strMeasure13,
+        // strMeasure14,
+        // strMeasure15,
+        // strMeasure16,
+        // strMeasure17,
+        // strMeasure18,
+        // strMeasure19,
+        // strMeasure20
     } = meal
 
     return (
-        <div className='detail-container'>
+        <div className='modal-container'>
         {/* <Fragment> */}
-            <h1 className='detail-title'>{strMeal}</h1>
+            <h1 className='modal-title'>{strMeal}</h1>
                 <section className='detail-head'>
-                    <div className='top-section'>
-                        <div className='img-container'>
-                            <img className='detailPhoto' alt={`${strMeal}`} src={strMealThumb}/>
-                        </div>
-                        <article className='detail-desc'>
-                                <p>Type: {strCategory}</p>
-                                <p>Nationality: {strArea}</p>
-                        </article>
-                    </div>
                 <section className='ingredients'>
                     <h4>Ingredients</h4>
                         <ul className='recipe-list'>
@@ -84,7 +68,7 @@ const MealDetail = () => {
                             <li>{strMeasure8} {strIngredient8}</li>
                             <li>{strMeasure9} {strIngredient9}</li>
                             <li>{strMeasure10} {strIngredient10}</li>
-                            <li>{strMeasure11} {strIngredient11}</li>
+                            {/* <li>{strMeasure11} {strIngredient11}</li>
                             <li>{strMeasure12} {strIngredient12}</li>
                             <li>{strMeasure13} {strIngredient13}</li>
                             <li>{strMeasure14} {strIngredient14}</li>
@@ -93,7 +77,7 @@ const MealDetail = () => {
                             <li>{strMeasure17} {strIngredient17}</li>
                             <li>{strMeasure18} {strIngredient18}</li>
                             <li>{strMeasure19} {strIngredient19}</li>
-                            <li>{strMeasure20} {strIngredient20}</li>
+                            <li>{strMeasure20} {strIngredient20}</li> */}
                         </ul>
                 </section>
                 </section>  
@@ -102,6 +86,10 @@ const MealDetail = () => {
                         <p className='instructions'>{strInstructions}</p>
                     </section>  
                         {/* </Fragment> */}
+                        {/* <Link
+                            onClick={()=>dispatch(getMeal(spoon))}
+                                to={`/meals/${spoon.idMeal}`}>Meal View
+                    </Link> */}
                 </div>
 
 
@@ -111,4 +99,4 @@ const MealDetail = () => {
     )
 }
 
-export default MealDetail
+export default MealModal

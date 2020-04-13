@@ -2,17 +2,16 @@
 @import './styles/meals.scss';
 @import './styles/modal.scss';
 
-
 $colors:(
     btn-main: #558C03,
     btn-modal: #C4D925,
     head: #BF0404,
     lighter-red: #F20530,
     erange: #F26B1D,
-
     testred: #F00713,
     searchbtn:#C90610
 );
+
 
 *{
     margin: 0;
@@ -23,6 +22,8 @@ $colors:(
 body, html{
     min-height: 100%;
     width: 100%;
+    font-family: Roboto,
+    // Georgia 'Times New Roman', Times, serif;;
 }
 
 html{
@@ -36,8 +37,17 @@ button{
     border: none;
 }
 
+a{  
+    text-decoration: none;
+    color: white;
+}
+
 button:hover{
     cursor: pointer;
+}
+
+img{
+    border-radius: 5px;
 }
 
 .btn-favs{
@@ -45,6 +55,15 @@ button:hover{
     padding: .5em .7em;
     text-align: center;
     border-radius: 10px;
+}
+
+.btn-close{
+    background-color: map-get($colors, head);
+    padding: .8em;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+
 }
 
 .btn-detail{
@@ -59,6 +78,10 @@ button:hover{
     background-color: map-get($colors, lighter-red);
     color: black;
 }
+.btn-modal:hover a{
+    background-color: map-get($colors, btn-main);
+    color: black;
+}
 
 .btn-detail a{
     color: white;
@@ -66,7 +89,8 @@ button:hover{
     text-align: center;
 }
 
-.modal-btn{
+
+.btn-modal{
     background-color: map-get($colors, btn-modal);
     color: white;
     padding: .8em;
@@ -74,9 +98,8 @@ button:hover{
     line-height: 8px;
 }
 
-.modal-btn:hover{
+.btn-modal:hover{
     background-color: map-get($colors, btn-main);
-    color: black;
 }
 
 .search-title{
@@ -86,7 +109,7 @@ button:hover{
 }
 
 .searchCont{
-    margin-top: 2em;
+    margin-top: 5em;
     display: flex;
     margin-right: auto;
     margin-left: auto;
@@ -107,7 +130,6 @@ input[value]{
 
 .btn-search{
     background-color: map-get($colors, searchbtn );
-    color: white;
     font-size: .58em;
     letter-spacing: 1.3px;
     font-weight: 700;
@@ -115,6 +137,11 @@ input[value]{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     outline: none;
+}
+
+.btn-search a{ 
+    text-decoration: none;
+    color: white;
 }
 
 .btn-search:hover{

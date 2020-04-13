@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {getFavs} from '../actions/mealActions';
 import {useSelector} from'react-redux';
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 
 const Navbar = () => {
@@ -18,12 +18,12 @@ const Navbar = () => {
     return (
         <nav id='navbar'>
             <div className='nav-links'>
-            <Link to='/'>Home</Link>
-            <Link to='/meals'>Meals</Link>
+            <NavLink to='/'>Home</NavLink>
+            {/* <NavLink to='/meals'>Meals</NavLink> */}
                 {favs && favs.length ? 
-                    (<Link to='/favorites'>
+                    (<NavLink to='/favorites'>
                         Favorites
-                    </Link>):null
+                    </NavLink>):null
                 }
             </div>
         </nav>

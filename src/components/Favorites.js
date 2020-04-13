@@ -10,10 +10,10 @@ const Favorites = () => {
         <Fragment>
             <h1 className='randoms-title'>Your Favorites</h1>
             <section id='meals'>
-           {favs.length > 0 ? (favs.map(spoon=> (
-                <Meal key={spoon.idMeal} 
-                    rando={spoon}/>
-                 ))):(null)}
+                {favs.length > 0 ? (favs.map(spoon=> (
+                    <Meal key={spoon.idMeal} 
+                        rando={spoon}/>
+                    ))):(null)}
             </section>
         </Fragment>
       

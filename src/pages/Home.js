@@ -3,18 +3,12 @@ import {useDispatch, useSelector } from 'react-redux'
 import {getMeals, nextPage} from '../actions/mealActions';
 import Pagination from '../components/Pagination';
 import Meal from '../components/Meal'
-// import Search from '../components/Search';
-import { useLocation} from 'react-router-dom';
 
 const Home = () => {
-
-    let location = useLocation();
-    console.log(location)
 
     const dispatch = useDispatch();
 
     const mealz = useSelector(state => state.meals.randoms);
-    // const search = useSelector(state => state.meals.search)
     const pgNumbers = useSelector(state => state.meals.pgNumbers)
     const mealsPpg = useSelector(state => state.meals.mealsPpg)
     // const currentPage = useSelector(state => state.meals.currentPage)
@@ -45,7 +39,12 @@ const Home = () => {
                     />))
                 }
             </section>
-                <Pagination mealsPpg={mealsPpg} totalMeals={pgNumbers.length} nextPage={nextPage}/>
+                {pgNumbers ? (
+                    <Pagination 
+                        mealsPpg={mealsPpg} 
+                        totalMeals={pgNumbers.length} 
+                        nextPage={nextPage}/>):null}
+                {/* <Pagination mealsPpg={mealsPpg} totalMeals={pgNumbers.length} nextPage={nextPage}/> */}
         </Fragment>
     )
 }

@@ -1,22 +1,21 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 // import{getMeal} from '../actions/e'
 
 
 const MealModal = () => {
 
     const meal = useSelector(state => state.meals.mealId)
-    console.log(meal)
 
     // const mealId = useParams()
     // console.log(mealId)
 
     const { strMeal,
         // strDrinkAlternate,
-        strCategory,strArea,
+        // strCategory,strArea,
         strInstructions,
-        strMealThumb,
+        // strMealThumb,
         // strYoutube,
         strIngredient1,
         strIngredient2,

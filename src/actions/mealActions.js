@@ -9,14 +9,14 @@ export const getFavs = favs => dispatch =>{
         meals = JSON.parse(localStorage.getItem('favedMeals'))
         return meals
     }
-    dispatch({type: types.GET_FAVS, payload: meals})
+   return dispatch({type: types.GET_FAVS, payload: meals})
 }
 
 export const getMeals = () => dispatch =>{
     fetch(api)
     .then(res => res.json())
     .then(data =>{
-        dispatch({type:types.GET_MEALS, payload: data.meals})})
+         dispatch({type:types.GET_MEALS, payload: data.meals})})
     .catch(error=> console.log('No Meals' + error))
 }
 
@@ -26,18 +26,30 @@ export const setLoading =()=>{
     }
 }
 
-export const searchIt = text => async dispatch =>{
-    try{
+export const searchIt = text => async dispatch =>{  
+    if(!text){
+        alert('Search field empty!')
+    }else try{
         setLoading()
         const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
         const data = await res.json()
             dispatch({type:types.SEARCH_MEAL, payload: data.meals})
-    }catch (error){
-        dispatch({type:types.SHOW_ERROR, payload: error})  
+    }catch (err){
+        console.log('meal error found')
+        alert('No meals found for your search!')
+        dispatch({type:types.SEARCH_ERROR, payload: err})  
     } 
 }
 
-export const setMeals = spoons => async dispatch =>{
+export const showAlert = text => dispatch =>{
+    console.log('goin..')
+     let text = "Please enter a search term"
+     console.log(text)
+    dispatch({type: types.SHOW_ALERT, payload: text})
+}
+
+export const setMeals = (spoons, err) => async dispatch =>{
+    // if (err)
     return dispatch({type: types.SET_MEALS, payload: spoons})
 }
 

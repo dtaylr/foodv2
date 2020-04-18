@@ -3,26 +3,27 @@ import { searchIt } from '../actions/mealActions'
 import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom'
 
-const Search = () => {
+const Search = ({mealz}) => {
 
     const [text, setText] = useState('')
 
     const dispatch = useDispatch()
 
     const onChange = e => setText(e.target.value)
+
     
     const onSubmit = e => {
         e.preventDefault();
-        if(text === ''){
-            alert('Please enter a meal to');
-        }else{
-            (searchIt(text));
+        // if(text === ''){
+        //     alert('Enter Text');
+        // }else{
+            searchIt(text);
             setText('')
-        }
+        // }
     }
     return (
         <div className='yeah'>
-            {/* <h3 className='search-title'>Meal Search</h3> */}
+            <h3 className='search-title'>Meal Search</h3>
             <form className='searchCont' onSubmit={onSubmit}>
                 <input 
                     type='text' 
@@ -32,13 +33,13 @@ const Search = () => {
                     placeholder='enter a meal' 
                     name='search'
                 />
-                <button 
-                    onClick={()=> dispatch(searchIt(text))}
-                    className='btn-search'
-                >
-                    <Link to={`/search?q=${text}`}>Search
-                    </Link>
-                </button>  
+                <Link to={`/search?q=${text}`}>
+                    <button 
+                        onClick={()=> dispatch(searchIt(text))}
+                        className='btn-search'
+                        >Search
+                    </button>  
+                </Link>
             </form>
         </div>
     )

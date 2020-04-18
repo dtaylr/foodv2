@@ -4,7 +4,9 @@ const initialState = {
     randoms: [],
     mealId: {},
     search: '',
-    error: {},
+    alertModal: '',
+    mealModal: '',
+    err: false,
     favs: [],
     filtered: [],
     mealsPpg: 5,
@@ -29,7 +31,7 @@ export default function (state = initialState, {payload, type}){
         case types.SEARCH_MEAL:
             return{
                 ...state,
-                search: payload,
+                // search: payload,
                 filtered: payload,
                 pgNumbers: payload
             }
@@ -58,9 +60,24 @@ export default function (state = initialState, {payload, type}){
                 ...state,
                 loading: true
             }
-        case types.SHOW_ERROR:
+        case types.SHOW_ALERT:
             return{
                 ...state,
+                alertModal: payload
+            }
+        case types.MEAL_MODAL:
+            return{
+                ...state,
+                mealModal: payload
+            }
+        case types.BLANK_SEARCH:
+            return{
+                ...state
+            }
+        case types.SEARCH_ERROR:
+            return{
+                ...state,
+                err: true
             }
             default:
                 return state;

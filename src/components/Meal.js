@@ -11,7 +11,6 @@ const Meal = ({rando: spoon, favs}) => {
 
     const dispatch = useDispatch()
     
-
     return (
         <div className='meal-container'>
             <h3 className='meal-title'>{spoon.strMeal}</h3>
@@ -43,7 +42,8 @@ const Meal = ({rando: spoon, favs}) => {
 }  
 
 Meal.propTypes = {
-
+    spoon: PropTypes.object.isRequired,
+    favs: PropTypes.array
 }
 
 export default Meal

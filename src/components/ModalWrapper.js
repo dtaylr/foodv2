@@ -1,17 +1,20 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
-import MealDetail from '../pages/MealDetail'
+// import MealDetail from '../pages/MealDetail'
 // import ReactDOM from 'react-dom';
 // import Portal from './Portal';
 import { useSelector } from 'react-redux';
 import MealModal from './ MealModal';
+// import AlertModal from './AlertModal';
 
 // let node = null
   
-const ModalWrapper = props =>{
+const ModalWrapper = () =>{
     
     let history = useHistory();
-    let mealId = useSelector(state => state.meals.mealId);
+    let mssge = useSelector(state => state.meals.alertModal);
+
+    console.log(mssge)
   
     let back = e => {
       e.stopPropagation();
@@ -23,13 +26,17 @@ const ModalWrapper = props =>{
         onClick={back}
         >
         <div className="modal">
-            <MealModal/> 
-            {/* <MealDetail/> */}
-            <button 
-              className='btn-close'
-              type="button" 
-              onClick={back}>Close
-            </button>   
+          {/* {mssge ? (<AlertModal 
+                      mssge={mssge}/>
+                      ):( */}
+                    <MealModal/>
+                    {/* )} */}
+             <button 
+                className='btn-close'
+                type="button" 
+                onClick={back}>
+                  Close
+              </button>
         </div>
       </div>
     );

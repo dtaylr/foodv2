@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Meals from './pages/Meals';
 import Search from'./components/Search'
 import Favorites from './components/Favorites';
-import Portal from './components/Portal';
+// import Portal from './components/Portal';
 import MealDetail from './pages/MealDetail';
 // import Search from './components/Search';
 import store from './store'

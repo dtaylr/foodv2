@@ -3,6 +3,7 @@ import rootReducer from './reducers/rootReducer';
 import thunk from 'redux-thunk';
 const middleware =[thunk]
 
+// eslint-disable-next-line
 const initialState = {};
 // if(localStorage.getItem('favedMeals')){
 // 	initialState.meals = {favs: JSON.parse(localStorage.getItem('favedMeals'))};

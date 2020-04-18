@@ -22,7 +22,8 @@ $colors:(
 body, html{
     min-height: 100%;
     width: 100%;
-    font-family: Roboto,
+    font-family: Roboto;
+    outline: none;
     // Georgia 'Times New Roman', Times, serif;;
 }
 
@@ -37,6 +38,10 @@ button{
     border: none;
 }
 
+li{
+    list-style: none;
+}
+
 a{  
     text-decoration: none;
     color: white;
@@ -48,6 +53,10 @@ button:hover{
 
 img{
     border-radius: 5px;
+}
+
+.loader{
+    background-color: transparent;
 }
 
 .btn-favs{

@@ -1,8 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
+import { TiArrowLeftThick } from 'react-icons/ti'
 
 const MealDetail = () => {
 
+    let history = useHistory()
     const meal = useSelector(state => state.meals.mealId)
     console.log(meal)
 
@@ -57,22 +60,31 @@ const MealDetail = () => {
         strMeasure20
     } = meal
 
+    let back = e => {
+        e.stopPropagation();
+        history.goBack();
+      };  
+
     return (
-        <div className='detail-container'>
+        <div data-id='detail-container' className='detail-container'>
         {/* <Fragment> */}
-            <h1 className='detail-title'>{strMeal}</h1>
+        <div>
+            <TiArrowLeftThick data-cy='back-arrow' onClick={back}/> 
+                <p data-cy='detail-back-btn'>Back</p>
+        </div>
+            <h1 data-test className='detail-title'>{strMeal}</h1>
                 <section className='detail-head'>
                     <div className='top-section'>
                         <div className='img-container'>
                             <img className='detailPhoto' alt={`${strMeal}`} src={strMealThumb}/>
                         </div>
                         <article className='detail-desc'>
-                                <p>Type: {strCategory}</p>
-                                <p>Nationality: {strArea}</p>
+                                <p data-test='type' >Type: {strCategory}</p>
+                                <p data-test='nationality'>Nationality: {strArea}</p>
                         </article>
                     </div>
                 <section className='ingredients'>
-                    <h4>Ingredients</h4>
+                    <h4 data-test='ingredients'>Ingredients</h4>
                         <ul className='recipe-list'>
                             <li>{strMeasure1} {strIngredient1}</li>
                             <li>{strMeasure2} {strIngredient2}</li>
@@ -98,8 +110,8 @@ const MealDetail = () => {
                 </section>
                 </section>  
                     <section className='instruct-container'>
-                        <h4 className='instruct-title'>Recipe</h4>
-                        <p className='instructions'>{strInstructions}</p>
+                        <h4 data-test='instruct-title' className='instruct-title'>Recipe</h4>
+                        <p data-test='instructions-detail' className='instructions'>{strInstructions}</p>
                     </section>  
                         {/* </Fragment> */}
                 </div>

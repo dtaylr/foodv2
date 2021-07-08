@@ -5,7 +5,7 @@ const Loading = () => {
     return (
         <div>
             <img src={loading} 
-                className='loader' 
+               data-class='loader' className='loader' 
                 alt='loading spinner'
             />
         </div>

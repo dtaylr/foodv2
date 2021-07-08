@@ -1,23 +1,35 @@
 import * as types from '../types'
 import api from '../utils/api'
+import axios from 'axios'
 
 export const getFavs = favs => dispatch =>{
     let meals = favs
     if(localStorage.getItem('favedMeals')){
         meals = JSON.parse(localStorage.getItem('favedMeals'));
     }else{
-        meals = JSON.parse(localStorage.getItem('favedMeals'))
+        //CHANGE
+        meals = 'No meals could be found'
         return meals
     }
    return dispatch({type: types.GET_FAVS, payload: meals})
 }
 
 export const getMeals = () => dispatch =>{
-    fetch(api)
-    .then(res => res.json())
-    .then(data =>{
-         dispatch({type:types.GET_MEALS, payload: data.meals})})
-    .catch(error=> console.log('No Meals' + error))
+    try {
+        axios.get(api.random)
+        .then((res) => res.data.meals)
+        .then((data) => {
+            dispatch({type: types.GET_MEALS, payload: data })        
+        })
+    } catch (error) {
+        console.log(error)
+        alert(error)
+    }
+    // fetch(api)
+    // .then(res => res.json())
+    // .then(data =>{
+    //      dispatch({type:types.GET_MEALS, payload: data.meals})})
+    // .catch(error=> console.log('No Meals' + error))
 }
 
 export const setLoading =()=>{
@@ -31,9 +43,13 @@ export const searchIt = text => async dispatch =>{
         alert('Search field empty!')
     }else try{
         setLoading()
-        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
-        const data = await res.json()
-            dispatch({type:types.SEARCH_MEAL, payload: data.meals})
+        axios.get(`${api.search}${text}`)
+        .then((res) => res.data)
+        .then((data) =>  dispatch({type:types.SEARCH_MEAL, payload: data.meals})
+        )
+        // const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
+        // const data = await res.json()
+            // dispatch({type:types.SEARCH_MEAL, payload: data.meals})
     }catch (err){
         console.log('meal error found')
         alert('No meals found for your search!')

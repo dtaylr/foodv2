@@ -3,7 +3,7 @@ import React from 'react'
 const Meals = () => {
     return (
         <div>
-            <h1>Meals Page</h1>
+            <h1 data-test='meals-heading'>Meals Page</h1>
         </div>
     )
 }

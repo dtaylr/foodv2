@@ -20,7 +20,7 @@ const Pagination = ({totalMeals, mealsPpg, nextPage}) => {
     
     return (
         <nav>
-            <ul className='pages'>
+            <ul data-class='pages-ul' className='pages'>
                 {pages.map(number => (
                     <li key={number} className='pg-num'>
                         <Link to='!#' onClick={()=> dispatch(nextPage(number))} className='pg-link'>

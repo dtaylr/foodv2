@@ -16,8 +16,8 @@ const Navbar = () => {
     }, [dispatch])
     
     return (
-        <nav id='navbar'>
-            <div className='nav-links'>
+        <nav data-id='navbar' id='navbar'>
+            <div data-class='nav-links' className='nav-links'>
             <NavLink to='/'>Home</NavLink>
             {/* <NavLink to='/meals'>Meals</NavLink> */}
                 {favs && favs.length ? 

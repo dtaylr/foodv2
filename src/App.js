@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Navbar from './components/Navbar'
 import Home from './pages/Home';
 import Meals from './pages/Meals';
 import Search from'./components/Search'
 import Favorites from './components/Favorites';
-// import Portal from './components/Portal';
 import MealDetail from './pages/MealDetail';
-// import Search from './components/Search';
-import store from './store'
-import {Provider} from 'react-redux';
+// import store from './store'
+// import {Provider} from 'react-redux';
 import { Switch, Route, useLocation } from 'react-router';
 import './App.scss';
 import { ScrollUp } from './components/ScrollUp';
@@ -23,7 +21,8 @@ function App() {
   let background = location.state && location.state.background;
 
   return (
-    <Provider store={store}>
+    // <Provider store={store}>
+    <Fragment>
       <ScrollUp/>
       <Navbar/>
       <Search/>
@@ -35,7 +34,8 @@ function App() {
         <Route export path='/favorites' children={<Favorites/>}/>
       </Switch>
 			{background && <Route path='/meals/:mealId' children={<ModalWrapper />} />}
-    </Provider>
+    {/* </Provider> */}
+    </Fragment>
   );
 }
 

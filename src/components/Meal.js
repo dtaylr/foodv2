@@ -13,24 +13,24 @@ const Meal = ({rando: spoon, favs}) => {
     
     return (
         <div className='meal-container'>
-            <h3 className='meal-title'>{spoon.strMeal}</h3>
+            <h3 data-cy='card-title' className='meal-title'>{spoon.strMeal}</h3>
             <div className='imgContainer'>
-                <img className='meal-viz' src={spoon.strMealThumb} alt={spoon.strMeal}/>
+                <img data-cy='card-img' className='meal-viz' src={spoon.strMealThumb} alt={spoon.strMeal}/>
             </div>
-            <article className='meal-desc'>
-                <p className='meal-cat'>Type: {spoon.strCategory}</p>
-                <p className='meal-area'>Cuisine: {spoon.strArea}</p>
+            <article className='card-desc'>
+                <p  data-test='card-cat' className='meal-cat'>Type: {spoon.strCategory}</p>
+                <p data-test='card-area' className='meal-area'>Cuisine: {spoon.strArea}</p>
             </article>
             <section className='meal-cntrls'>
-                <i onClick={()=> dispatch(faved(favs, spoon))} className='faved'><TiHeartOutline/></i>
+                <i data-cy='card-favs' onClick={()=> dispatch(faved(favs, spoon))} className='faved'><TiHeartOutline/></i>
                 <button className='btn-detail'>
-                    <Link
+                    <Link data-cy='meal-view'
                         onClick={()=>dispatch(getMeal(spoon))}
                         to={`/meals/${spoon.idMeal}`}>Meal View
                     </Link>
                 </button>
                 <button className='btn-modal'>
-                    <Link  
+                    <Link data-cy='card-modal-btn'
                         onClick={()=>dispatch(getMeal(spoon))}
                         to={{pathname: `/meals/${spoon.idMeal}`,
                             state: {background: location}}}>Quick View

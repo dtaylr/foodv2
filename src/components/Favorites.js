@@ -8,7 +8,7 @@ const Favorites = () => {
 
     return (
         <Fragment>
-            <h1 className='randoms-title'>Your Favorites</h1>
+            <h1 data-id='favorites-title' className='randoms-title'>Your Favorites</h1>
             <section id='meals'>
                 {favs.length > 0 ? (favs.map(spoon=> (
                     <Meal key={spoon.idMeal} 

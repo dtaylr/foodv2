@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom'
 // import ReactDOM from 'react-dom';
 // import Portal from './Portal';
 import { useSelector } from 'react-redux';
-import MealModal from './ MealModal';
+import MealModal from './MealModal';
 // import AlertModal from './AlertModal';
 
 // let node = null
@@ -22,16 +22,17 @@ const ModalWrapper = () =>{
     };
   
     return (
-      <div className='modalWrapper'
+      <div data-id='modalWrapper' className='modalWrapper'
         onClick={back}
         >
-        <div className="modal">
+        <div data-cy='modal' className="modal">
           {/* {mssge ? (<AlertModal 
                       mssge={mssge}/>
                       ):( */}
                     <MealModal/>
                     {/* )} */}
              <button 
+                data-cy='modal-close-btn'
                 className='btn-close'
                 type="button" 
                 onClick={back}>

@@ -3,7 +3,7 @@ import { searchIt } from '../actions/mealActions'
 import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom'
 
-const Search = ({mealz}) => {
+const Search = () => {
 
     const [text, setText] = useState('')
 
@@ -11,20 +11,22 @@ const Search = ({mealz}) => {
 
     const onChange = e => setText(e.target.value)
 
-    
     const onSubmit = e => {
         e.preventDefault();
         // if(text === ''){
         //     alert('Enter Text');
         // }else{
             searchIt(text);
-            setText('')
+            setText({text: ''})
         // }
     }
     return (
         <div className='yeah'>
             <h3 className='search-title'>Meal Search</h3>
-            <form className='searchCont' onSubmit={onSubmit}>
+            <form 
+                className='searchCont' 
+                onSubmit={onSubmit}
+            >
                 <input 
                     type='text' 
                     className='searchBar' 

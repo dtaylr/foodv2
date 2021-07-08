@@ -25,10 +25,6 @@ const Home = () => {
 
     return (
         <Fragment>
-            {/* <div className='search-holder'>
-                <Search mealz={search}/>
-            </div> */}
-
             <h1 className='randoms-title'>Random Meals</h1>
             <section id='meals'>
                 {mealz.slice(0,5).map(rando=> (

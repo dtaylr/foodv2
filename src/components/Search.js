@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { searchIt } from '../actions/mealActions'
+import { searchIt } from '../actions/recipeActions'
 import { useDispatch } from 'react-redux';
 import {Link} from 'react-router-dom'
 

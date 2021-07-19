@@ -2,7 +2,7 @@ import * as types from '../types'
 import api from '../utils/api'
 import axios from 'axios'
 
-export const getFavs = favs => dispatch =>{
+export const getFavorites = favs => dispatch =>{
     let meals = favs
     if(localStorage.getItem('favedMeals')){
         meals = JSON.parse(localStorage.getItem('favedMeals'));
@@ -11,15 +11,19 @@ export const getFavs = favs => dispatch =>{
         meals = 'No meals could be found'
         return meals
     }
-   return dispatch({type: types.GET_FAVS, payload: meals})
+   return dispatch({type: types.GET_FAVORITES, payload: meals})
 }
 
-export const getMeals = () => dispatch =>{
+export const getRecipe = idMeal => dispatch => {
+    return dispatch({type: types.GET_RECIPE, payload: idMeal})
+}
+
+export const getRecipes = () => dispatch =>{
     try {
         axios.get(api.random)
         .then((res) => res.data.meals)
         .then((data) => {
-            dispatch({type: types.GET_MEALS, payload: data })        
+            dispatch({type: types.GET_RECIPES, payload: data })        
         })
     } catch (error) {
         console.log(error)
@@ -45,7 +49,7 @@ export const searchIt = text => async dispatch =>{
         setLoading()
         axios.get(`${api.search}${text}`)
         .then((res) => res.data)
-        .then((data) =>  dispatch({type:types.SEARCH_MEAL, payload: data.meals})
+        .then((data) =>  dispatch({type:types.SEARCH_RECIPES, payload: data.meals})
         )
         // const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${text}`)
         // const data = await res.json()
@@ -57,23 +61,23 @@ export const searchIt = text => async dispatch =>{
     } 
 }
 
-export const showAlert = text => dispatch =>{
-    console.log('goin..')
-     let text = "Please enter a search term"
-     console.log(text)
-    dispatch({type: types.SHOW_ALERT, payload: text})
-}
+// export const showAlert = text => dispatch =>{
+//     console.log('goin..')
+//      let text = "Please enter a search term"
+//      console.log(text)
+//     dispatch({type: types.SHOW_ALERT, payload: text})
+// }
 
-export const setMeals = (spoons, err) => async dispatch =>{
+export const setRecipes = (spoons, err) => async dispatch =>{
     // if (err)
-    return dispatch({type: types.SET_MEALS, payload: spoons})
+    return dispatch({type: types.SET_RECIPES, payload: spoons})
 }
 
-export const nextPage = number => dispatch =>{
-    return dispatch({type:types.NEXT_PAGE, payload: number});
-}
+// export const nextPage = number => dispatch =>{
+//     return dispatch({type:types.NEXT_PAGE, payload: number});
+// }
 
-export const faved = (favs, spoon) => dispatch =>{
+export const addToFavorites = (favs, spoon) => dispatch =>{
     const favedMeals = favs.slice();
     
     let liked = false
@@ -89,11 +93,8 @@ export const faved = (favs, spoon) => dispatch =>{
 
     localStorage.setItem('favedMeals', JSON.stringify(favedMeals));
     alert(`Stored ${spoon.strMeal} to Favs`);
-    return dispatch ({type:types.FAVED, payload:{
+    return dispatch ({type:types.ADD_FAVORITE, payload:{
         favedMeals: favedMeals
     } })
 }
 
-export const getMeal = idMeal => dispatch => {
-    return dispatch({type: types.GET_MEAL, payload: idMeal})
-}

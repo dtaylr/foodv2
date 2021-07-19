@@ -1,14 +1,13 @@
 import * as types from '../types';
 
 const initialState = {
-    randoms: [],
-    mealId: {},
+    randomRecipes: [],
+    selectedRecipe: {},
     search: '',
-    alertModal: '',
-    mealModal: '',
+    recipeModal: '',
     err: false,
-    favs: [],
-    filtered: [],
+    favorites: [],
+    queriedRecipes: [],
     mealsPpg: 5,
     pgNumbers: [],
     currentPage: 1,
@@ -18,57 +17,57 @@ const initialState = {
 
 export default function (state = initialState, {payload, type}){
     switch(type){
-        case types.GET_MEALS:
+        case types.GET_RECIPES:
             return{
                 ...state,
-                randoms: payload,
+                randomRecipes: payload,
             }
-        case types.GET_MEAL:
+        case types.GET_RECIPE:
             return{
             ...state,
-            mealId: payload
+            selectedRecipe: payload
         }
-        case types.SEARCH_MEAL:
+        case types.SEARCH_RECIPES:
             return{
                 ...state,
                 // search: payload,
-                filtered: payload,
+                queriedRecipes: payload,
                 pgNumbers: payload
             }
-        case types.SET_MEALS:
+        case types.SET_RECIPES:
             return{
                 ...state,
                 loading: false,
             }
-        case types.NEXT_PAGE:
+        // case types.NEXT_PAGE:
+        //     return{
+        //         ...state,
+        //         currentPage: payload
+        //     }
+        case types.ADD_FAVORITE:
             return{
                 ...state,
-                currentPage: payload
+                favorites: payload.favedMeals
             }
-        case types.FAVED:
+        case types.GET_FAVORITES:
             return{
                 ...state,
-                favs: payload.favedMeals
-            }
-        case types.GET_FAVS:
-            return{
-                ...state,
-                favs: payload
+                favorites: payload
             }
         case types.SET_LOADING:
             return{
                 ...state,
                 loading: true
             }
-        case types.SHOW_ALERT:
+        // case types.SHOW_ALERT:
+        //     return{
+        //         ...state,
+        //         alertModal: payload
+        //     }
+        case types.RECIPE_MODAL:
             return{
                 ...state,
-                alertModal: payload
-            }
-        case types.MEAL_MODAL:
-            return{
-                ...state,
-                mealModal: payload
+                recipeModal: payload
             }
         case types.BLANK_SEARCH:
             return{

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {getFavs} from '../actions/mealActions';
+import {getFavorites} from '../actions/recipeActions';
 import {useSelector} from'react-redux';
 import {NavLink} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
@@ -8,16 +8,16 @@ const Navbar = () => {
 
     const dispatch = useDispatch()
 
-    const favs = useSelector(state=> state.meals.favs)    
+    const favs = useSelector(state=> state.recipes.favorites)    
 
     useEffect(() => {
-        dispatch(getFavs(favs))
+        dispatch(getFavorites(favs))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch])
     
     return (
-        <nav data-id='navbar' id='navbar'>
-            <div data-class='nav-links' className='nav-links'>
+        <nav id='navbar'>
+            <div className='nav-links'>
             <NavLink to='/'>Home</NavLink>
             {/* <NavLink to='/meals'>Meals</NavLink> */}
                 {favs && favs.length ? 

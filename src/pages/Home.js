@@ -1,18 +1,19 @@
 import React, {useEffect, Fragment} from 'react'
 import {useDispatch, useSelector } from 'react-redux'
-import {getMeals, nextPage} from '../actions/mealActions';
-import Pagination from '../components/Pagination';
-import Meal from '../components/Meal'
+import {getRecipes} from '../actions/recipeActions';
+// import Pagination from '../components/Pagination';
+import Recipe from '../components/Recipe'
 
 const Home = () => {
 
     const dispatch = useDispatch();
 
-    const mealz = useSelector(state => state.meals.randoms);
-    const pgNumbers = useSelector(state => state.meals.pgNumbers)
-    const mealsPpg = useSelector(state => state.meals.mealsPpg)
+    const recipes = useSelector(state => state.recipes.randomRecipes);
+    const favs = useSelector(state => state.recipes.favorites)
+
+    // const pgNumbers = useSelector(state => state.meals.pgNumbers)
+    // const mealsPpg = useSelector(state => state.meals.mealsPpg)
     // const currentPage = useSelector(state => state.meals.currentPage)
-    const favs = useSelector(state => state.meals.favs)
 
     // const indexPrevMeal = currentPage * mealsPpg; //index of last meal should give 5 sets ppg ex 1 * 5 = 5, 2*5=10 ...
     // const indexFirstMeal = indexPrevMeal - mealsPpg; //can get 0 if on 1st pg but should still work? or 1 since 0 based
@@ -20,26 +21,27 @@ const Home = () => {
     // const nextPage = () => setPage(pages)
 
     useEffect(()=>{
-        dispatch(getMeals())
+        dispatch(getRecipes())
     }, [dispatch])
 
     return (
         <Fragment>
-            <h1 className='randoms-title'>Random Meals</h1>
+            <h1 className='randoms-title'>Recipes of the Day</h1>
             <section id='meals'>
-                {mealz.slice(0,5).map(rando=> (
-                    <Meal 
-                        key={rando.idMeal} 
-                        rando={rando} 
+                {recipes.slice(0,5).map(recipe=> (
+                    <Recipe 
+                        key={recipe.idMeal} 
+                        recipe={recipe} 
                         favs={favs}
-                    />))
+                    />)
+                    )
                 }
             </section>
-                {pgNumbers ? (
+                {/* {pgNumbers ? (
                     <Pagination 
                         mealsPpg={mealsPpg} 
                         totalMeals={pgNumbers.length} 
-                        nextPage={nextPage}/>):null}
+                        nextPage={nextPage}/>):null} */}
                 {/* <Pagination mealsPpg={mealsPpg} totalMeals={pgNumbers.length} nextPage={nextPage}/> */}
         </Fragment>
     )

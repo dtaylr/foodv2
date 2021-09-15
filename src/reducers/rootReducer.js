@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import mealsReducer from './mealsReducer';
+import mealsReducer from './recipeReducer';
 // import searchReducer from './searchReducer';
 
 export default combineReducers({

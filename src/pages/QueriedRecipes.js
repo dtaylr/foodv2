@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect} from 'react'
-import Recipe from '../components/Recipe';
+import RecipeCard from '../components/RecipeCard';
 import Loading from '../components/Loading';
 import {useSelector, useDispatch}from 'react-redux'
 import { setRecipes} from '../actions/recipeActions';
@@ -27,7 +27,7 @@ const Filtered = () => {
                 <section id='meals'>
                     {loading || !queriedRecipes ? (
                     <h1 className=''>No Meals Found</h1>):(queriedRecipes.map(recipe=> (
-                        <Recipe 
+                        <RecipeCard 
                             key={recipe.idMeal} 
                             recipe={recipe}
                             favs={favs}/>

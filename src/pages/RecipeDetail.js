@@ -1,19 +1,15 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import {closeModal} from '../actions/recipeActions';
+// import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-// import { TiArrowLeftThick } from 'react-icons/ti'
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const RecipeDetail = () => {
 
-    let history = useHistory()
-    const {state} = useLocation()
-
     const recipe = useSelector(state => state.recipes.selectedRecipe)
-
-    // const mealId = useParams()
-    // console.log(mealId)
+    const open = useSelector(state => state.recipes.showModal)
+    const dispatch = useDispatch()
 
     const {strMeal, strArea, strCategory, strMealThumb, strInstructions} = recipe
 
@@ -45,20 +41,19 @@ const RecipeDetail = () => {
 
        const listDirections = () => <p>{strInstructions}</p>
 
-    let back = e => {
-        e.stopPropagation();
-        history.goBack();
-      };  
+    // let back = e => {
+    //     e.stopPropagation();
+    //     history.goBack();
+    //   };  
 
     return (
         <div className='detail-container'>
             <div>
-                <FontAwesomeIcon
-                    onClick={back}
-                    icon={faArrowLeft}
+                {open ? (<FontAwesomeIcon
+                    onClick={()=> dispatch(closeModal)}
+                    icon={faTimes}
                     size='2x'
-                /> 
-                <p>Back</p>
+                    className='modal-close-btn'/>) : null}
             </div>
         <h1 className='detail-title'>{strMeal}</h1>
             <section className='detail-head'>

@@ -1,18 +1,19 @@
 import React from 'react'
-import {Link, useLocation} from 'react-router-dom'
-import {getRecipe, addToFavorites} from '../actions/recipeActions';
+import {Link} from 'react-router-dom'
+import {getRecipe, addToFavorites, toggleModal} from '../actions/recipeActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux';
+import RecipeModal from './RecipeModal'
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-const Meal = ({recipe: spoon, favs}) => {
-
-    let location = useLocation();
+const RecipeCard = ({recipe: spoon, favs}) => {
 
     const dispatch = useDispatch()
-
-    const {strArea, strMeal, strMealThumb, strCategory} = spoon
     
+    const {strArea, strMeal, strMealThumb, strCategory} = spoon
+
+    // const open = useSelector(state => state.recipes.showModal)
+
     return (
         <div className='meal-container'>
             <h3 className='meal-title'>{strMeal}</h3>
@@ -37,11 +38,14 @@ const Meal = ({recipe: spoon, favs}) => {
                 <button className='btn-detail'>
                     <Link 
                         onClick={()=>dispatch(getRecipe(spoon))}
-                        to={`/recipe/${spoon.strMeal}`}>Meal View
+                        to={`/recipe/${strMeal}`}>Meal View
                     </Link>
                 </button>
-                <button className='btn-modal'>
-                    {/*Modal Here */}
+                <button 
+                    className='btn-modal'
+                    onClick={()=> dispatch(toggleModal(spoon))}
+                > Open Modal
+                <RecipeModal/>
                     {/* <Link data-cy='card-modal-btn'
                         onClick={()=>dispatch(getMeal(spoon))}
                         to={{pathname: `/meals/${spoon.idMeal}`,
@@ -55,4 +59,4 @@ const Meal = ({recipe: spoon, favs}) => {
 
 
 
-export default Meal
+export default RecipeCard

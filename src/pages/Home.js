@@ -2,7 +2,7 @@ import React, {useEffect, Fragment} from 'react'
 import {useDispatch, useSelector } from 'react-redux'
 import {getRecipes} from '../actions/recipeActions';
 // import Pagination from '../components/Pagination';
-import Recipe from '../components/Recipe'
+import RecipeCard from '../components/RecipeCard'
 
 const Home = () => {
 
@@ -29,7 +29,7 @@ const Home = () => {
             <h1 className='randoms-title'>Recipes of the Day</h1>
             <section id='meals'>
                 {recipes.slice(0,5).map(recipe=> (
-                    <Recipe 
+                    <RecipeCard 
                         key={recipe.idMeal} 
                         recipe={recipe} 
                         favs={favs}

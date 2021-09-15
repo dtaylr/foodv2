@@ -3,6 +3,7 @@ import * as types from '../types';
 const initialState = {
     randomRecipes: [],
     selectedRecipe: {},
+    showModal: false,
     search: '',
     recipeModal: '',
     err: false,
@@ -39,6 +40,22 @@ export default function (state = initialState, {payload, type}){
                 ...state,
                 loading: false,
             }
+        case types.TOGGLE_MODAL:
+            return {
+                ...state,
+                showModal: true,
+                selectedRecipe: payload
+            }
+        case types.CLOSE_MODAL:
+            return {
+                // ...state,
+                showModal: payload,
+            }    
+        case types.REMOVE_FAVORITE:
+            return {
+                ...state,
+                favs: payload
+            }
         // case types.NEXT_PAGE:
         //     return{
         //         ...state,
@@ -57,17 +74,7 @@ export default function (state = initialState, {payload, type}){
         case types.SET_LOADING:
             return{
                 ...state,
-                loading: true
-            }
-        // case types.SHOW_ALERT:
-        //     return{
-        //         ...state,
-        //         alertModal: payload
-        //     }
-        case types.RECIPE_MODAL:
-            return{
-                ...state,
-                recipeModal: payload
+                loading: !false
             }
         case types.BLANK_SEARCH:
             return{

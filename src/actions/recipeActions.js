@@ -7,7 +7,6 @@ export const getFavorites = favs => dispatch =>{
     if(localStorage.getItem('favedMeals')){
         meals = JSON.parse(localStorage.getItem('favedMeals'));
     }else{
-        //CHANGE
         meals = 'No meals could be found'
         return meals
     }
@@ -36,10 +35,15 @@ export const getRecipes = () => dispatch =>{
     // .catch(error=> console.log('No Meals' + error))
 }
 
-export const setLoading =()=>{
-    return{
-        type: types.SET_LOADING
-    }
+export const toggleModal = idMeal => dispatch => {
+    return dispatch ({type: types.TOGGLE_MODAL, payload: idMeal})}
+
+export const closeModal = () => dispatch => {
+    return dispatch({type: types.CLOSE_MODAL, payload: false})
+}
+
+export const setLoading = () => dispatch => {
+    return dispatch({type: types.SET_LOADING})
 }
 
 export const searchIt = text => async dispatch =>{  
@@ -61,15 +65,7 @@ export const searchIt = text => async dispatch =>{
     } 
 }
 
-// export const showAlert = text => dispatch =>{
-//     console.log('goin..')
-//      let text = "Please enter a search term"
-//      console.log(text)
-//     dispatch({type: types.SHOW_ALERT, payload: text})
-// }
-
 export const setRecipes = (spoons, err) => async dispatch =>{
-    // if (err)
     return dispatch({type: types.SET_RECIPES, payload: spoons})
 }
 
@@ -98,3 +94,18 @@ export const addToFavorites = (favs, spoon) => dispatch =>{
     } })
 }
 
+export const removeFavorite = favs => dispatch => {
+    // let favs = recipes
+     favs.filter((recipe) => recipe.idMeal !== favs.idMeal)
+     return dispatch ({type: types.REMOVE_FAVORITE, payload: favs })
+}
+
+// let meals = favs
+// if(localStorage.getItem('favedMeals') && length > 0){
+//     meals = JSON.parse(localStorage.getItem('favedMeals'));
+// }else{
+//     //CHANGE
+//     meals = 'No meals could be found'
+//     return meals
+// }
+// return dispatch({type: types.GET_FAVORITES, payload: meals})
